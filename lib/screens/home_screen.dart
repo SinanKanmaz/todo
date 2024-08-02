@@ -22,7 +22,9 @@ class HomeScreen extends ConsumerWidget {
             value: true,
           ),
           trailing: IconButton.filled(
-            onPressed: () {},
+            onPressed: () {
+              ref.read(todoListProvider.notifier).deleteTodo(index);
+            },
             icon: const Icon(Icons.delete),
             color: Colors.red,
           ),

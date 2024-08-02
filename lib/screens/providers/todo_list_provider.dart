@@ -13,4 +13,11 @@ class TodoList extends _$TodoList {
   void addNewTodo(Todo todo) {
     state = [...state, todo];
   }
+
+  void deleteTodo(int index) {
+    List<Todo> todos = state;
+    todos.removeAt(index);
+    state = [];
+    state = todos;
+  }
 }
