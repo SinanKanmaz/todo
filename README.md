@@ -26,6 +26,23 @@ flutter pub add dev:build_runner
 flutter pub add dev:custom_lint
 flutter pub add dev:riverpod_lint
 
+## Firebase options
+
+flutterfire config \
+  --project=todo-app-a6832 \
+  --out=lib/firebase_options_dev.dart \
+  --ios-bundle-id=com.google.todoApp.dev \
+  --android-app-id=com.google.todo_app_dev
+
+
+flutter pub add firebase_core
+update ios deployment target to 13
+
+update jetbrains version in android/settings.gradle
+id "org.jetbrains.kotlin.android" version "1.8.22" apply false
+
+
+
 
 
 ## Routing

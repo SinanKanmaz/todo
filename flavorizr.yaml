@@ -10,7 +10,7 @@
       android:
         applicationId: "com.google.todo_app_dev"
       ios:
-        bundleId: "com.google.todo_app_dev"
+        bundleId: "com.google.todoApp.dev"
       macos:
         bundleId: "com.google.todoApp.dev"
 
