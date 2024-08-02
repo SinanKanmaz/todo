@@ -9,3 +9,6 @@ git push public repo
 ## Flavors
 flutter pub run flutter_flavorizr
 flutter run --flavor dev -t lib/main_dev.dart
+
+## Routing
+flutter pub add go_router
