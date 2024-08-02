@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:todo_app/core/models/todo.dart';
 import 'package:todo_app/core/repositories/firestore_repository.dart';
@@ -11,15 +13,28 @@ class TodoList extends _$TodoList {
     return [];
   }
 
-  void addNewTodo(Todo todo) {
-    ref.read(firestoreRepositoryProvider.notifier).addNewTodo(todo);
-    state = [...state, todo];
+  void addNewTodo(Todo todo) async {
+    try {
+      String? id =
+          await ref.read(firestoreRepositoryProvider.notifier).addNewTodo(todo);
+
+      state = [...state, todo.copyWith(id: id)];
+    } on FirebaseException catch (e) {
+      debugPrint(e.toString());
+    }
   }
 
-  void deleteTodo(int index) {
-    List<Todo> todos = state;
-    todos.removeAt(index);
-    state = [];
-    state = todos;
+  void deleteTodo(int index) async {
+    try {
+      await ref
+          .read(firestoreRepositoryProvider.notifier)
+          .deleteTodo(state[index].id);
+      List<Todo> todos = state;
+      todos.removeAt(index);
+      state = [];
+      state = todos;
+    } on FirebaseException catch (e) {
+      debugPrint(e.toString());
+    }
   }
 }

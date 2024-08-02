@@ -9,7 +9,11 @@ class FirestoreRepository extends _$FirestoreRepository {
   @override
   void build() {}
 
-  Future<void> addNewTodo(Todo todo) async {
-    ref.read(firestoreServiceProvider.notifier).addNewTodo(todo);
+  Future<String?> addNewTodo(Todo todo) async {
+    return ref.read(firestoreServiceProvider.notifier).addNewTodo(todo);
+  }
+
+  Future<void> deleteTodo(String? id) async {
+    return ref.read(firestoreServiceProvider.notifier).deleteTodo(id);
   }
 }

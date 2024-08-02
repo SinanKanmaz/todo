@@ -17,6 +17,7 @@ class HomeScreen extends ConsumerWidget {
       body: ListView.builder(
         itemBuilder: (context, index) => ListTile(
           title: Text(todoList[index].title),
+          subtitle: Text(todoList[index].id.toString()),
           leading: Checkbox(
             onChanged: (v) {},
             value: true,
@@ -54,7 +55,7 @@ class HomeScreen extends ConsumerWidget {
                   TextButton(
                     onPressed: () {
                       if (title != null) {
-                        Todo todo = Todo(title: title!);
+                        Todo todo = Todo(title: title!, id: null);
                         ref.read(todoListProvider.notifier).addNewTodo(todo);
                       }
                       Navigator.pop(context);

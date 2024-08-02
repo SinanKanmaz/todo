@@ -11,7 +11,14 @@ class FirestoreService extends _$FirestoreService {
   @override
   void build() {}
 
-  Future<void> addNewTodo(Todo todo) async {
-    await _db.collection("todos").add(todo.toJson());
+  Future<String> addNewTodo(Todo todo) async {
+    DocumentReference ref = await _db.collection("todos").add(todo.toJson());
+
+    await _db.collection("todos").doc(ref.id).update({"id": ref.id});
+    return ref.id;
+  }
+
+  Future<void> deleteTodo(String? id) async {
+    await _db.collection("todos").doc(id).delete();
   }
 }
