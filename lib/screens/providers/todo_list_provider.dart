@@ -1,5 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:todo_app/core/models/todo.dart';
+import 'package:todo_app/core/repositories/firestore_repository.dart';
 
 part 'todo_list_provider.g.dart';
 
@@ -11,6 +12,7 @@ class TodoList extends _$TodoList {
   }
 
   void addNewTodo(Todo todo) {
+    ref.read(firestoreRepositoryProvider.notifier).addNewTodo(todo);
     state = [...state, todo];
   }
 

@@ -34,12 +34,24 @@ flutterfire config \
   --ios-bundle-id=com.google.todoApp.dev \
   --android-app-id=com.google.todo_app_dev
 
+init firebase 
+
+    WidgetsFlutterBinding.ensureInitialized();
+  if (F.appFlavor == Flavor.dev) {
+    await Firebase.initializeApp(
+        options: dev.DefaultFirebaseOptions.currentPlatform);
+  }
+
 
 flutter pub add firebase_core
 update ios deployment target to 13
 
 update jetbrains version in android/settings.gradle
 id "org.jetbrains.kotlin.android" version "1.8.22" apply false
+
+## Firestore
+flutter pub add cloud_firestore
+final _db = FirebaseFirestore.instance;
 
 
 
