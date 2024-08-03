@@ -10,7 +10,12 @@ part 'todo_list_provider.g.dart';
 class TodoList extends _$TodoList {
   @override
   List<Todo> build() {
+    getTodos();
     return [];
+  }
+
+  Future<void> getTodos() async {
+    state = await ref.read(firestoreRepositoryProvider.notifier).getTodos();
   }
 
   void addNewTodo(Todo todo) async {

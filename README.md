@@ -54,8 +54,7 @@ flutter pub add cloud_firestore
 final _db = FirebaseFirestore.instance;
 
 
-
-
-
-## Routing
-flutter pub add go_router
+## News
+Wasm
+https://docs.flutter.dev/platform-integration/web/wasm
+Adaptive widgets

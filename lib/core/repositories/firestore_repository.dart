@@ -16,4 +16,8 @@ class FirestoreRepository extends _$FirestoreRepository {
   Future<void> deleteTodo(String? id) async {
     return ref.read(firestoreServiceProvider.notifier).deleteTodo(id);
   }
+
+  Future<List<Todo>> getTodos() async {
+    return ref.read(firestoreServiceProvider.notifier).getTodos();
+  }
 }

@@ -21,4 +21,20 @@ class FirestoreService extends _$FirestoreService {
   Future<void> deleteTodo(String? id) async {
     await _db.collection("todos").doc(id).delete();
   }
+
+  Future<List<Todo>> getTodos() async {
+    List<Todo> todos = [];
+    QuerySnapshot<Todo> query = await _db
+        .collection("todos")
+        .withConverter(
+            fromFirestore: (snapshot, options) =>
+                Todo.fromJson(snapshot.data()!),
+            toFirestore: (todo, _) => todo.toJson())
+        .get();
+
+    for (var todo in query.docs) {
+      todos.add(todo.data());
+    }
+    return todos;
+  }
 }
